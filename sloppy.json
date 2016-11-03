@@ -1,0 +1,25 @@
+{
+    "project": "asi-challenge",
+    "services": [
+        {
+            "id": "asi-challenge",
+            "apps": [
+                {
+                    "id": "app",
+                    "domain": {
+                        "type": "HTTP",
+                        "uri": "asi-challenge.sloppy.zone"
+                    },
+                    "mem": 1024,
+                    "image": "tmilata/asi-challenge",
+                    "instances": 1,
+                    "port_mappings": [
+                        {
+                            "container_port": 80
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
