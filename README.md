@@ -6,7 +6,33 @@
  
 
 ## Build & Deployment
+Gradle build script produces an executable jar, which is packaged using Gradle Docker plugin into a Docker image. Any Docker hosting service should be able to run it, I am using http://sloppy.io.
+
+The definition of the machine to be used for running the app is in the [sloppy.json config file](sloppy.json).
+
+Sloppy.io does not provide a hosting for docker image, therefore I push the images to my DockerHub repository and sloppy.io fetches the images from there.
+ 
+The release workflow would be as follows:
+```
+./gradlew distDocker # build the docker image
+docker push tmilata/asi-challenge # push to docker repo
+
+```
 
 ## Running Locally
+`./gradlew distDocker && docker run -p 80:80 tmilata/asi-challenge` runs the app with port 80 of the docker machine forwarded to port 80 of your local machine.
 
-## Demonstration
+## How To Use
+`GET https://asi-challenge.sloppy.zone/user/<username>/repos` where `<username>` is a GitHub username.
+
+## Try The Running Instance
+
+https://asi-challenge.sloppy.zone/user/torvalds/repos
+
+## Stack
+ - Scala
+ - Spray for HTTP client and server
+ - Typesafe config for configuration
+ - Gradle for building
+ - DockerHub as Docker images repository
+ - Sloppy.io as hosting
