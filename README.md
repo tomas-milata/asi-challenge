@@ -16,6 +16,8 @@ The release workflow would be as follows:
 ```
 ./gradlew distDocker # build the docker image
 docker push tmilata/asi-challenge # push to docker repo
+sloppy change asi-challenge sloppy.json # reconfigure machine instance (run only if needed)
+sloppy restart asi-challenge/asi-challenge/app # restart app, it automatically fetches the newest app docker image
 
 ```
 
